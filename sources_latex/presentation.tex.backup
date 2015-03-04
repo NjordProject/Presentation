@@ -1,0 +1,110 @@
+\documentclass{beamer}
+
+%Includes
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphics}
+\usepackage[francais]{babel}
+
+%Thème
+\usetheme{Warsaw}
+
+%Template
+\setbeamertemplate{footline}[page number]
+
+%Informations de la page de garde
+\title{\textbf{Projet Njord}\\ Topographie d'une zone \\ par communication d'une équipe de drones}
+\author{Aigreault Clément, Henrio Jordan, Pham Chitin}
+\date{16 Mars 2015}
+
+%Macros
+%%Permet de retirer le header (ainsi que l'espace qu'il utiliserait)
+\newcommand\rmheader{\makeatletter\setbeamertemplate{headline}[default]\def\beamer@entrycode{\vspace*{-\headheight}}\makeatother}
+
+\begin{document}
+  %Page de garde
+  {
+    \rmheader
+    \begin{frame}
+      \titlepage
+    \end{frame}
+  }
+  
+  %Introduction
+  {
+    \begin{frame}
+      \frametitle{Introduction}
+      \framesubtitle{Besoin}
+      
+      \begin{itemize}
+	\item Environnements inaccessibles par l'être humain
+	\item Mission d'urgence, chantier...
+	\item Besoin d'un intermédiaire
+      \end{itemize}
+    \end{frame}
+    
+    \begin{frame}
+      \frametitle{Introduction}
+      \framesubtitle{Ressources}
+      
+      \begin{itemize}
+	\item Technologie à un stade intéressant
+	\begin{itemize}
+	  \item Robotique
+	  \item Intelligence artificielle
+	  \item Communication sans fil
+	\end{itemize}
+	\item Possibilité de "donner vie" à des machines 
+	\item Une perte matérielle est moins importante qu'une perte humaine
+      \end{itemize}
+    \end{frame}
+    
+    \begin{frame}
+      \frametitle{Introduction}
+      \framesubtitle{Solution}
+      
+      \begin{itemize}
+	\item Élaboration d'un réseau étoilé
+	\item Le noyau : un serveur
+	\item Les branches : drones volants
+	\item Les drones récoltent des informations
+	\item Le serveur cartographie la zone
+      \end{itemize}
+    \end{frame}
+    
+    \begin{frame}
+      \frametitle{Introduction}
+      \framesubtitle{Solution}
+      
+      \begin{figure}[htbp]
+	\centering
+	\includegraphics[scale=0.23]{img/projet_schema.png}
+	\caption{Schéma du réseau}
+      \end{figure}  
+    \end{frame}
+    
+    \begin{frame}
+      \frametitle{Introduction}
+      \framesubtitle{Application}
+      
+      \begin{itemize}
+	\item Drones autonomes et équipés d'un capteur ultrason
+	\item Communication par fréquences radio
+	\item Représentation graphique de la zone en temps réel
+      \end{itemize}
+    \end{frame}
+  }
+  
+  %Plan de la présentation
+  {
+    \begin{frame}
+      \frametitle{Déroulement de la présentation}
+      \tableofcontents[hidesubsections]
+    \end{frame}
+  }
+  
+  %Section Serveur
+  {
+    \section{Serveur}
+  }
+\end{document}

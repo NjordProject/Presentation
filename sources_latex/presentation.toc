@@ -1,0 +1,11 @@
+\beamer@endinputifotherversion {3.24pt}
+\select@language {french}
+\beamer@sectionintoc {1}{Serveur}{8}{0}{1}
+\beamer@subsectionintoc {1}{1}{Principe}{8}{0}{1}
+\beamer@subsectionintoc {1}{2}{D\IeC {\'e}veloppement}{9}{0}{1}
+\beamer@subsectionintoc {1}{3}{D\IeC {\'e}monstration}{10}{0}{1}
+\beamer@sectionintoc {2}{Drone}{11}{0}{2}
+\beamer@subsectionintoc {2}{1}{\IeC {\'E}tude pr\IeC {\'e}liminaire}{11}{0}{2}
+\beamer@subsectionintoc {2}{2}{Nos composants}{12}{0}{2}
+\beamer@subsectionintoc {2}{3}{Le montage}{13}{0}{2}
+\beamer@subsectionintoc {2}{4}{R\IeC {\'e}sultat final}{14}{0}{2}
