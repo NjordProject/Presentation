@@ -18,20 +18,35 @@
 \date{16 Mars 2015}
 
 %Macros
-%%Permet de retirer le header (ainsi que l'espace qu'il utiliserait)
-\newcommand\rmheader{\makeatletter\setbeamertemplate{headline}[default]\def\beamer@entrycode{\vspace*{-\headheight}}\makeatother}
+%%Permet de retirer le header
+\newcommand{\rmheader}
+{
+\makeatletter
+\setbeamertemplate{headline}[default]
+\def\beamer@entrycode{\vspace*{-\headheight}}
+\makeatother
+}
 
 \begin{document}
   %Page de garde
   {
-    \rmheader
+    \makeatletter
+    \setbeamertemplate{headline}[default]
+    \def\beamer@entrycode{\vspace*{-\headheight}}
+    \makeatother
     \begin{frame}
       \titlepage
     \end{frame}
   }
   
   %Introduction
+  %Introduire les raisons de ce projet et qu'est-ce qu'on développe
   {
+    \makeatletter
+    \setbeamertemplate{headline}[default]
+    \def\beamer@entrycode{\vspace*{-\headheight}}
+    \makeatother
+    %Présenter les besoins
     \begin{frame}
       \frametitle{Introduction}
       \framesubtitle{Besoin}
@@ -42,7 +57,12 @@
 	\item Besoin d'un intermédiaire
       \end{itemize}
     \end{frame}
-    
+
+    \makeatletter
+    \setbeamertemplate{headline}[default]
+    \def\beamer@entrycode{\vspace*{-\headheight}}
+    \makeatother
+    %Expliquer que la technologie actuelle peut répondre aux besoins
     \begin{frame}
       \frametitle{Introduction}
       \framesubtitle{Ressources}
@@ -59,6 +79,11 @@
       \end{itemize}
     \end{frame}
     
+    \makeatletter
+    \setbeamertemplate{headline}[default]
+    \def\beamer@entrycode{\vspace*{-\headheight}}
+    \makeatother
+    %Présenter une solution possible
     \begin{frame}
       \frametitle{Introduction}
       \framesubtitle{Solution}
@@ -72,6 +97,11 @@
       \end{itemize}
     \end{frame}
     
+    \makeatletter
+    \setbeamertemplate{headline}[default]
+    \def\beamer@entrycode{\vspace*{-\headheight}}
+    \makeatother
+    %Schéma de la solution
     \begin{frame}
       \frametitle{Introduction}
       \framesubtitle{Solution}
@@ -83,6 +113,11 @@
       \end{figure}  
     \end{frame}
     
+    \makeatletter
+    \setbeamertemplate{headline}[default]
+    \def\beamer@entrycode{\vspace*{-\headheight}}
+    \makeatother
+    %Présenter vulgairement notre application
     \begin{frame}
       \frametitle{Introduction}
       \framesubtitle{Application}
@@ -96,7 +131,12 @@
   }
   
   %Plan de la présentation
+  %Expliquer le déroulement de la présentation
   {
+    \makeatletter
+    \setbeamertemplate{headline}[default]
+    \def\beamer@entrycode{\vspace*{-\headheight}}
+    \makeatother
     \begin{frame}
       \frametitle{Déroulement de la présentation}
       \tableofcontents[hidesubsections]
@@ -104,7 +144,141 @@
   }
   
   %Section Serveur
+  %Présenter le serveur : de quoi il est constituer ? comment il fonctionne ? qu'est-ce qu'on obtient, etc...
   {
     \section{Serveur}
+      
+      %Sous-section Principe de fonctionnement
+      %Présenter le schéma et le rôle de chaque tâche
+      \subsection{Principe}
+	\begin{frame}
+	  \begin{itemize}
+	    \item Constitué de trois entités distinctes
+	    \begin{itemize}
+	      \item Communication
+	      \item Sauvegarde des données
+	      \item Cartographie
+	    \end{itemize}
+	    \item Concurrence
+	    \item Limiter la perte d'informations
+	  \end{itemize}
+	\end{frame}
+	
+	\begin{frame} %Modélisation du serveur
+	  \begin{figure}[htbp]
+	    \centering
+	    \includegraphics[scale=0.3]{img/server_model.png}
+	    \caption{Modèle du serveur}
+	  \end{figure}  
+	\end{frame}
+
+	\begin{frame} %Tâche 1 : Communication
+	  \frametitle{Tâche 1 : Communication}
+	
+	  \begin{itemize}
+	    \item Lit les messages des drones
+	    \item Écrit sur le port série de la machine
+	    \item Envoie des ordres aux drones
+	    \item Lit le port série
+	  \end{itemize}
+	\end{frame}
+	
+	\begin{frame} %Tâche 2 : Sauvegarde des données
+	  \frametitle{Tâche 2 : Sauvegarde des données}
+	
+	  \begin{itemize}
+	   \item Lit le port série
+	   \item Insère les messages dans la base de données (BDD)
+	  \end{itemize}
+	\end{frame}
+	
+	\begin{frame} %Tâche 3 : Cartographie
+	  \frametitle{Tâche 3 : Cartographie}
+	
+	  \begin{itemize}
+	    \item Lit le contenu de la BDD
+	    \item Insère chaque entrée dans un matrice
+	    \item Dessine le contenu de la matrice
+	  \end{itemize}
+	\end{frame}
+
+      %Sous-section Développement du serveur
+      %Présenter l'implémentation de chaque tâche
+      \subsection{Développement}
+	\begin{frame}
+	  \frametitle{Tâche 1 : Communication}
+	  
+	  \begin{itemize}
+	    \item Utilisation d'un NRF24L01 (composant) 
+	  \end{itemize}
+
+	\end{frame}
+	
+      %Sous-section Démonstration du fonctionnement
+      %Montrer une impression d'écran de topographie et faire une démonstration en direct
+      \subsection{Démonstration}
+	\begin{frame}
+	 
+	\end{frame}
+  }
+  
+  %Section Drone
+  %Présenter le drone : Les composants, les librairies, le résultat final, ...
+  {
+    \section{Drone}
+    
+      %Sous-section
+      \subsection{Étude préliminaire}
+	\begin{frame}
+	  
+	\end{frame}
+      
+      \subsection{Composants}
+	\begin{frame}
+	 
+	\end{frame}
+
+      
+      \subsection{Montage}
+	\begin{frame}
+	 
+	\end{frame}
+
+      
+      \subsection{Résultat final}
+	\begin{frame}
+	 
+	\end{frame}
+
+
+  }
+  
+  %Section Analyse
+  {
+    \section{Analyse}
+    
+      \subsection{Conception}
+	\begin{frame}
+	 
+	\end{frame}
+	
+      \subsection{Entités externes}
+	\begin{frame}
+	 
+	\end{frame}
+	
+      \subsection{Expérience}
+	\begin{frame}
+	  
+	\end{frame}
+  }
+  
+  %Section Conclusion
+  {
+    \section{Conclusion}
+      \begin{frame}
+       
+      \end{frame}
+
   }
 \end{document}
