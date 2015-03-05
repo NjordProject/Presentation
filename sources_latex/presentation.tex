@@ -156,6 +156,7 @@
 	   \item Traite les informations recoltées
 	   \item Chaque drone connaît le serveur, mais pas les autres drones
 	   \item Le serveur connaît tous les drones
+	   \item Possibilité d'envoyer des ordres
 	  \end{itemize}
 	\end{frame}
       
@@ -186,8 +187,8 @@
 	  \begin{itemize}
 	    \item Lit les messages des drones
 	    \item Écrit sur le port série de la machine
-	    \item Envoie des ordres aux drones
 	    \item Lit le port série
+	    \item Envoie des ordres aux drones
 	  \end{itemize}
 	\end{frame}
 	
@@ -197,6 +198,7 @@
 	  \begin{itemize}
 	   \item Lit le port série
 	   \item Insère les messages dans la base de données (BDD)
+	   \item Écrit sur le port série
 	  \end{itemize}
 	\end{frame}
 	
@@ -205,8 +207,9 @@
 	
 	  \begin{itemize}
 	    \item Lit le contenu de la BDD
-	    \item Insère chaque entrée dans un matrice
+	    \item Insère chaque entrée dans une matrice
 	    \item Dessine le contenu de la matrice
+	    \item Détermine si un ordre doit être envoyé
 	  \end{itemize}
 	\end{frame}
 
@@ -219,7 +222,6 @@
 	  \begin{itemize}
 	    \item Utilisation d'un NRF24L01 (composant)
 	    \item Implémentation en Arduino
-	    \item Parcours l'ensemble des adresses connues
 	  \end{itemize}
 	\end{frame}
 	
