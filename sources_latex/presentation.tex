@@ -4,6 +4,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{graphics}
+\usepackage{eurosym}
 \usepackage[francais]{babel}
 
 %Thème
@@ -148,6 +149,7 @@
   {
     \section{Serveur}
     
+      %Re situe le cours de la présentation
       \begin{frame}
 	\tableofcontents[hideothersubsections]
       \end{frame}
@@ -237,7 +239,7 @@
 	    \item BDD implémentée à l'aide de Redis
 	    \begin{itemize}
 	      \item Utilisation simple (fonctionnement, Python)
-	      \item Requête complexe comme SQL inutile
+	      \item Système robuste comme SQL inutile
 	    \end{itemize}
 	  \end{itemize}
 	\end{frame}
@@ -273,41 +275,244 @@
   {
     \section{Drone}
     
+      %Re situe le cours de la présentation
       \begin{frame}
 	\tableofcontents[hideothersubsections]
       \end{frame}
     
       %Sous-section Étude prémilinaire
-      %
+      %Présenter les recherches qui ont été faites avant l'achat des composants
       \subsection{Étude préliminaire}
 	\begin{frame}
+	  \begin{itemize}
+	    \item Réalisation du cahier des charges
+	    \item État de l'art
+	    \item Plusieurs type de drones (grand/petit, rapide/lent, agile/prise de vues...)
+	    \item Étape non négligeable d'un projet
+	  \end{itemize}
+	\end{frame}
 	
+	\begin{frame}
+	  \begin{itemize}
+	    \item Coup de coeur pour le Crazyflie de BitCraze
+	    \item Pièces détachées, code source disponible, libre
+	    \item Un peu cher et ne correspond pas parfaitement à notre application
+	  \end{itemize}
+	\end{frame}
+	
+	\begin{frame}
+	  \begin{figure}[htbp]
+	    \centering
+	    \includegraphics[scale=0.2]{img/crazyflie.png}
+	    \caption{Photo du Crazyflie de BitCraze}
+	  \end{figure} 
+	\end{frame}
+
+	\begin{frame}
+	  \begin{itemize}
+	    \item Devis
+	    \item Premières estimations
+	    \begin{itemize}
+	      \item Poids
+	      \item Puissance requise
+	      \item Consommation en courant
+	      \item Autonomie
+	    \end{itemize}
+	    \item Plus lourd que le Crazyflie mais moins cher
+	  \end{itemize}
 	\end{frame}
       
+      %Sous-section Composants
+      %Présenter les composants choisis 
       \subsection{Composants}
+	\begin{frame} %Arduino
+	  \frametitle{Arduino}
+	
+	  \begin{itemize}
+	    \item Cours d'Arduino en début d'année
+	    \item Micro-contrôleurs très en vogue
+	    \item Similaire au C/C++
+	    \item Bon marché et existe en petite taille
+	  \end{itemize}
+	\end{frame}
+	
 	\begin{frame}
-	 
+	  \frametitle{Arduino}
+	  
+	  \begin{figure}[htbp]
+	    \centering
+	    \includegraphics[scale=0.2]{img/arduinopromini.jpg}
+	    \caption{Photo de l'Arduino Pro Mini}
+	  \end{figure} 
+	\end{frame}
+	
+	\begin{frame} %Gyroscope/Accéléromètre
+	  \frametitle{Gyroscope/Accéléromètre}
+	
+	  \begin{itemize}
+	    \item Besoin de stabiliser le drone
+	    \item MPU-6050 très répendu, petit, bon marché et embarque un accéléromètre
+	    \item Besoin de déterminer la position du drone dans l'espace
+	    \begin{itemize}
+	      \item GPS : Trop peu précis pour une salle
+	      \item Triangulation : Trop coûteux, peu adapté à la problématique
+	      \item Mesure de l'accélération
+	    \end{itemize}
+	    \item Solution non exploitable
+	  \end{itemize}
+	\end{frame}
+	
+	\begin{frame}
+	  \frametitle{Gyroscope/Accéléromètre}
+	
+	  \begin{figure}[htbp]
+	    \centering
+	    \includegraphics[scale=0.05]{img/mpu6050.jpg}
+	    \caption{Photo du MPU-6050}
+	  \end{figure} 
+	\end{frame}
+	
+	\begin{frame} %Communication sans fil
+	  \frametitle{Communication sans fil}
+	
+	  \begin{itemize}
+	    \item Nombreux composants sur le marché
+	    \begin{itemize}
+	      \item Modules XBee : Très célèbre mais trop coûteux ($\sim$ 30 \euro) et trop gros
+	      \item Fréquence radio : Célèbre, bon marché ($\sim$ 0,80 \euro) et petit
+	    \end{itemize}
+	    \item NRF24L01 suffisant au sein d'une même pièce
+	  \end{itemize}
+	\end{frame}
+	
+	\begin{frame}
+	  \frametitle{Communication sans fil}
+	
+	  \begin{figure}[htbp]
+	    \centering
+	    \includegraphics[scale=0.05]{img/nrf24l01.jpg}
+	    \caption{Photo du NRF24L01}
+	  \end{figure} 
+	\end{frame}
+	
+	\begin{frame} %ESC
+	  \frametitle{ESC}
+	
+	  \begin{itemize}
+	    \item Electric Speed Controler(ESC)
+	    \item Coûteux ($\sim$ 15 \euro / moteur)
+	    \item Lourd ($\sim$ 25g / ESC)
+	    \item Frabication possible (transistor)
+	  \end{itemize}
+	\end{frame}
+	
+	\begin{frame} %Moteur, batterie, total
+	  \frametitle{Moteur, batterie, total}
+	
+	  \begin{itemize}
+	    \item Même moteurs et batterie que le Crazyflie
+	    \item $\sim$ 25 \euro \space contre 120 \euro
+	    \item 35g contre 19g (estimation)
+	  \end{itemize}
 	\end{frame}
 
-      
-      \subsection{Développement et montage}
-	\begin{frame}
-	 
+      %Sous-section Développement et montage
+      %Parler des implémentation qui on été faites
+      \subsection{Développement et aquisition des pièces manquantes}
+	\begin{frame} %Explication des bibliothèques
+	  \begin{itemize}
+	    \item Développement de bibliothèques composant avant assemblage
+	    \begin{itemize}
+	      \item Moteur
+	      \item Communicateur radio : Surcouche de RadioHead
+	      \item Gyroscope : Inspiration de Jeff Rowberg 
+	    \end{itemize}
+	  \end{itemize}
+	\end{frame}
+	
+	\begin{frame} %Histoires de PCB et des fixations moteur
+	  \begin{itemize}
+	    \item Encore deux pièces manquantes
+	    \begin{itemize}
+	      \item Circuit imprimé
+	      \item Fixations moteurs
+	    \end{itemize}
+	    \item Pas de matériel à l'EISTI, besoin d'aide extérieur
+	    \item Visite au fablab de Gennevilliers
+	  \end{itemize}
 	\end{frame}
 
+	\begin{frame}
+	  \frametitle{Circuit imprimé}
+	  
+	  \begin{itemize}
+	    \item Dessin du circuit à l'aide du logiciel Fritzing
+	    \item Support de la part de l'ENSEA
+	  \end{itemize}
+	\end{frame}
+	
+	\begin{frame}
+	  \frametitle{Circuit imprimé}
+	
+	  \begin{figure}[htbp]
+	    \centering
+	    \includegraphics[scale=0.05]{img/carte_avant.jpg}
+	    \caption{Photo du circuit}
+	  \end{figure} 
+	\end{frame}
+	
+	\begin{frame}
+	  \frametitle{Fixations moteur}
+	  
+	  \begin{itemize}
+	    \item Modèle des pièces disponible sur GitHub
+	    \item Demande auprès d'une entreprise, mais pièces trop minutieuses
+	    \item Demande auprès de Polytech Instrumentation lors de Robafis
+	  \end{itemize}
+	\end{frame}
+
+	\begin{frame}
+	  \frametitle{Fixations moteur}
+	
+	  \begin{figure}[htbp]
+	    \centering
+	    \includegraphics[scale=0.05]{img/fixations.jpg}
+	    \caption{Photo des fixations moteur}
+	  \end{figure} 
+	\end{frame}
       
       \subsection{Résultat final}
 	\begin{frame}
-	 
+	  \frametitle{Après assemblage}
+	  
+	  \begin{figure}[htbp]
+	    \centering
+	    \includegraphics[scale=0.05]{img/drone_photo.jpg}
+	    \caption{Photo du drone après assemblage}
+	  \end{figure} 
 	\end{frame}
-
-
+	
+	\begin{frame} %Test après assemblage
+	  \begin{itemize}
+	    \item Premier réflexe : Vérifier le décollage
+	    \item Plusieurs problèmes
+	    \begin{itemize}
+	      \item Contrôle moteur depuis l'Arduino : Non suffisant, capacité maximum des moteurs non atteinte
+	      \item By-pass de l'Arduino : Peut-être suffisant, un moteur défecteux
+	    \end{itemize}
+	  \end{itemize}
+	\end{frame}
+	
+	\begin{frame} %Démonstration en direct
+	  \makebox[\linewidth]{Démonstration}\par
+	\end{frame}
   }
   
   %Section Analyse
   {
     \section{Analyse}
     
+      %Re situe le cours de la présentation
       \begin{frame}
 	\tableofcontents[hideothersubsections]
       \end{frame}
@@ -331,6 +536,8 @@
   %Section Conclusion
   {
     \section{Conclusion}
+    
+      %Re situe le cours de la présentation
       \begin{frame}
 	\tableofcontents[hideothersubsections]
       \end{frame}

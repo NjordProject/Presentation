@@ -47,7 +47,7 @@ Le but de cette partie est de présenter le drone. En commençant par présenter
 ###Étude préliminaire
 Dans un premier temps nous avons commencé par faire un cahier des charges du drone, afin de déterminer précisément les fonctionnalités dont il devrait disposer. Comme dans n'importe quel projet ceci est une étape à ne pas négliger afin de réussir au mieu la modélisation. De là, nous avons fait l'état de l'art du domaine afin de voir ce qui se fait en terme de drone et voir s'il existe des projets similaire au notre afin de trouver de l'inspiration. Il faut savoir qu'il existe plusieurs types de drones (petit, grand, rapide, lent, agile, prise de vue, ...). 
 
-À ce moment là le Crazyflie de chez Bitcraze nous a beaucoup plu et nous avons décider de nous inspirer des dimensions de ce drone. De plus il est possible d'acheter la plupart de ses composants et pièces détachées et les codes sources sont a disposition librement sur GitHub.
+À ce moment là le Crazyflie de chez Bitcraze nous a beaucoup plu et nous avons décider de nous inspirer des dimensions de ce drone. De plus il est possible d'acheter la plupart de ses composants et pièces détachées et les codes sources sont a disposition librement sur GitHub. Cependant ce drone est un peu cher et ne correspond pas parfaitement à notre application, puisqu'il ne dispose d'aucun capteur pour récupérer des données sur l'environnement dans le quel il se trouve. Et il est trop rapide pour récolter des informations correctement.
 
 À la suite de ces deux étapes nous avons établi un devis et une estimation du poids, de la puissance consommée par l'ensemble des composants et des premiers calculs tenter de déterminer s'il allait voler ou non. Lors de l'élaboration du devis nous savions que notre drone serait plus lourd que le Crazyflie et cela nous "arrangeait" car nous souhaitions que notre drone ait un vol un peu moins "agressif" afin de récolter un maximum de données.
 
@@ -64,7 +64,7 @@ Pour ce qui est des moteurs et la batterie nous avons choisi d'utiliser les mêm
 
 On arrive alors à un drone d'environ 25€ contre 120€ pour le Crazyflie. Aussi nous avions estimé le poids total à 35g alors que le Crazyflie en fait 19g. 
 
-###Développement et montage
+###Développement et aquisition des pièces manquantes
 Lors de la réceptions des pièces nous avons pensé qu'il serait plus judicieux de développer une bibliothèque pour chaque type de composant avant d'assembler le tout. Nous avons donc créer un bibliothèque pour contrôler les moteurs. Pour ce qui est des émetteurs/récepteurs radio nous avons créer une surcouche de la bibliothèque Radiohead. Et en ce qui concerne le gyroscope nous nous sommes inspiré de la biliothèque de Jeff Rowberg.
 
 Une fois ceci fait il manquait encore deux choses pour pouvoir assembler le tout : le circuit imprimé et les fixations moteurs. Tout comme le Crazyflie nous souhaitions fixer les moteurs directement sur la plaquette du drone. Nous avons trouvé la modélisation de ces pièces sur le GitHub de BitCraze. Mais l'Eisti ne disposant pas d'imprimante 3D il nous a fallu trouver un moyen de les faire imprimer. Aussi l'Eisti ne dispose pas du matériel nécéssaire pour la réalisation de circuit imprimé. Nous sommes alors rendu au fablab de Gennevillier afin de discuter avec ses membres et voir si nous pouvions nous servir de leur matériel. Suite à notre visite nous leur avons envoyé un mail mais nous n'avons jamais eu de réponse. Alors ils nous a fallut trouver une autre aide extérieur.
@@ -74,6 +74,9 @@ Pour le circuit nous avons alors fait appel à l'ENSEA, qui a accepté de nous r
 En ce qui concerne les fixations moteur nous avons fait appel à une entreprise qui met à disposition ses imprimantes 3D, mais ils nous ont dit que nos pièces étaient trop minitieuse pour leurs imprimantes. À cette époque avait lieu le concours Robafis à l'Eisti. Et des entreprises exposaient leur produit dans le hall CT, notamment Polytech instrumentation exposait des imprimantes 3D. Après avoir discuté avec eux, ils ont accepté de nous imprimer et nous envoyer nos composants gratuitement.
 
 ###Résultat final
+Une fois tous les éléments en notre possession nous avons pu souder les composants électronique et coller les fixations moteurs à la plaquette. (Montrer le résultat final)
+
+Une fois le drone assemblé, notre premier réflexe a été de vérifier qu'il décollait. Nous avons donc préparé un code qui se chargeait de faire tourner les moteurs à la moitié de leur capacité mais cela ne suffisait pas. Alors nous avons essayé de les faire tourner au maximum de leur capacité mais cela ne fonctionnait toujours pas alors. Mais on a constaté que lorsqu'on fournit la valeur maximum que l'Arduino peut envoyer les moteurs ne sont pas réellement à leur capacité maximum. Alors nous avons essayé de les alimenter en faisait un by-pass de l'Arduino. Cette fois-ci les moteurs tournaient bien au maximum de leur capacité, mais il n'a pas plus décollé. En fait on a constaté un second problème, un des moteurs tourne moins vite que les trois autres. En by-passant l'Arduino le drone pourrait peut-être décollé, car à un moment il a fait un back-flip (dû au fait qu'un moteur tourne moins vite).
 
 ##Analyse
 

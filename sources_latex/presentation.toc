@@ -6,11 +6,11 @@
 \beamer@subsectionintoc {1}{3}{D\IeC {\'e}monstration}{18}{0}{1}
 \beamer@sectionintoc {2}{Drone}{20}{0}{2}
 \beamer@subsectionintoc {2}{1}{\IeC {\'E}tude pr\IeC {\'e}liminaire}{21}{0}{2}
-\beamer@subsectionintoc {2}{2}{Composants}{22}{0}{2}
-\beamer@subsectionintoc {2}{3}{D\IeC {\'e}veloppement et montage}{23}{0}{2}
-\beamer@subsectionintoc {2}{4}{R\IeC {\'e}sultat final}{24}{0}{2}
-\beamer@sectionintoc {3}{Analyse}{25}{0}{3}
-\beamer@subsectionintoc {3}{1}{Conception}{26}{0}{3}
-\beamer@subsectionintoc {3}{2}{Entit\IeC {\'e}s externes}{27}{0}{3}
-\beamer@subsectionintoc {3}{3}{Exp\IeC {\'e}rience}{28}{0}{3}
-\beamer@sectionintoc {4}{Conclusion}{29}{0}{4}
+\beamer@subsectionintoc {2}{2}{Composants}{25}{0}{2}
+\beamer@subsectionintoc {2}{3}{D\IeC {\'e}veloppement et aquisition des pi\IeC {\`e}ces manquantes}{33}{0}{2}
+\beamer@subsectionintoc {2}{4}{R\IeC {\'e}sultat final}{39}{0}{2}
+\beamer@sectionintoc {3}{Analyse}{42}{0}{3}
+\beamer@subsectionintoc {3}{1}{Conception}{43}{0}{3}
+\beamer@subsectionintoc {3}{2}{Entit\IeC {\'e}s externes}{44}{0}{3}
+\beamer@subsectionintoc {3}{3}{Exp\IeC {\'e}rience}{45}{0}{3}
+\beamer@sectionintoc {4}{Conclusion}{46}{0}{4}
