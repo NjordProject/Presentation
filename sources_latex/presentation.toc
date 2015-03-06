@@ -11,6 +11,7 @@
 \beamer@subsectionintoc {2}{4}{R\IeC {\'e}sultat final}{39}{0}{2}
 \beamer@sectionintoc {3}{Analyse}{42}{0}{3}
 \beamer@subsectionintoc {3}{1}{Conception}{43}{0}{3}
-\beamer@subsectionintoc {3}{2}{Entit\IeC {\'e}s externes}{44}{0}{3}
-\beamer@subsectionintoc {3}{3}{Exp\IeC {\'e}rience}{45}{0}{3}
-\beamer@sectionintoc {4}{Conclusion}{46}{0}{4}
+\beamer@subsectionintoc {3}{2}{Contacts ext\IeC {\'e}rieurs}{46}{0}{3}
+\beamer@subsectionintoc {3}{3}{Montage}{48}{0}{3}
+\beamer@subsectionintoc {3}{4}{Exp\IeC {\'e}rience}{49}{0}{3}
+\beamer@sectionintoc {4}{Conclusion}{50}{0}{4}

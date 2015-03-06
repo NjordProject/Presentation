@@ -18,16 +18,6 @@
 \author{Aigreault Clément, Henrio Jordan, Pham Chitin}
 \date{16 Mars 2015}
 
-%Macros
-%%Permet de retirer le header
-\newcommand{\rmheader}
-{
-\makeatletter
-\setbeamertemplate{headline}[default]
-\def\beamer@entrycode{\vspace*{-\headheight}}
-\makeatother
-}
-
 \begin{document}
   %Page de garde
   {
@@ -43,6 +33,7 @@
   %Introduction
   %Introduire les raisons de ce projet et qu'est-ce qu'on développe
   {
+    %Permet de retirer le header ainsi que l'espace qu'il prendrait
     \makeatletter
     \setbeamertemplate{headline}[default]
     \def\beamer@entrycode{\vspace*{-\headheight}}
@@ -239,7 +230,7 @@
 	    \item BDD implémentée à l'aide de Redis
 	    \begin{itemize}
 	      \item Utilisation simple (fonctionnement, Python)
-	      \item Requête complexe comme SQL inutile
+	      \item Système robuste comme SQL inutile
 	    \end{itemize}
 	  \end{itemize}
 	\end{frame}
@@ -419,7 +410,7 @@
       %Sous-section Développement et montage
       %Parler des implémentation qui on été faites
       \subsection{Développement et aquisition des pièces manquantes}
-	\begin{frame}
+	\begin{frame} %Explication des bibliothèques
 	  \begin{itemize}
 	    \item Développement de bibliothèques composant avant assemblage
 	    \begin{itemize}
@@ -430,7 +421,7 @@
 	  \end{itemize}
 	\end{frame}
 	
-	\begin{frame}
+	\begin{frame} %Histoires de PCB et des fixations moteur
 	  \begin{itemize}
 	    \item Encore deux pièces manquantes
 	    \begin{itemize}
@@ -467,7 +458,7 @@
 	  \begin{itemize}
 	    \item Modèle des pièces disponible sur GitHub
 	    \item Demande auprès d'une entreprise, mais pièces trop minutieuses
-	    \item Demande auprès de Polytech Instrumentation lors de Robafis
+	    \item Demande auprès de Polytech Instrumentation (filiale de Jeulin) lors de Robafis
 	  \end{itemize}
 	\end{frame}
 
@@ -492,9 +483,20 @@
 	  \end{figure} 
 	\end{frame}
 	
+	\begin{frame} %Test après assemblage
+	  \begin{itemize}
+	    \item Premier réflexe : Vérifier le décollage
+	    \item Plusieurs problèmes
+	    \begin{itemize}
+	      \item Contrôle moteur depuis l'Arduino : Non suffisant, capacité maximum des moteurs non atteinte
+	      \item By-pass de l'Arduino : Peut-être suffisant, un moteur défecteux
+	    \end{itemize}
+	  \end{itemize}
+	\end{frame}
 	
-
-
+	\begin{frame} %Démonstration en direct
+	  \makebox[\linewidth]{Démonstration}\par
+	\end{frame}
   }
   
   %Section Analyse
@@ -505,20 +507,82 @@
       \begin{frame}
 	\tableofcontents[hideothersubsections]
       \end{frame}
-    
+      
+      %Sous-section Conception
+      %Aborder les erreurs faites au moment du choix des composants
       \subsection{Conception}
 	\begin{frame}
-	 
+	  \begin{itemize}
+	    \item Erreurs dès le devis
+	    \item Estimation du poids (approximations et éléments négligés)
+	    \item Circuit imprimé élément le plus lourd
+	    \item 10\% de la somme totale des composants éléctroniques
+	  \end{itemize}
 	\end{frame}
 	
-      \subsection{Entités externes}
 	\begin{frame}
-	 
+	  \begin{itemize}
+	    \item Choix des moteurs
+	    \item Rapides mais couple insuffisant
+	    \item Ne peuvent pas supporter le poids du drone
+	  \end{itemize}
 	\end{frame}
 	
+	\begin{frame}
+	  \begin{itemize}
+	    \item Moteurs : alimentés en 3,3V
+	    \item Capteurs ultrasons : nécessitent du 5V
+	    \item Drone non fonctionnel dès la conception
+	  \end{itemize}
+	\end{frame}
+	
+      %Sous-section Contacts extérieurs
+      %Parler des différents problèmes engendrés par facteurs qui ne dépendent pas de nous
+      \subsection{Contacts extérieurs}
+	\begin{frame}
+	  \begin{itemize}
+	    \item L'EISTI peut adaptée à ce genre de projet
+	    \item Besoin de support extérieur (fixations moteur, circuit imprimé, découpe)
+	    \item Temps de recherche + création => Délai conséquent
+	    \item Premiers essais trop proches de la deadline (fin février)
+	    \item Pas le temps de profiter de l'expérience aquise pour une seconde version
+	    \item Date de tests idéale : Fin 2014
+	  \end{itemize}
+	\end{frame}
+	
+	\begin{frame}
+	  \begin{itemize}
+	    \item Source d'achat des pièces 
+	    \item Coût réduit se ressent sur la qualité (contrefaçon)
+	    \item Moteur provenant du même fournisseur, mais puissance différente
+	    \item Arduino différente de l'officielle, prise de retard
+	  \end{itemize}
+	\end{frame}
+	
+      %Sous-section Montage
+      %Aborder les problèmes engendrés par le montage que nous avons fait
+      \subsection{Montage}
+	\begin{frame}
+	  \begin{itemize}
+	    \item Faire du circuit, notre châssis
+	    \item Deux inconvénients majeurs
+	    \begin{itemize}
+	      \item Fiabilité de la fixation
+	      \item Moteurs non parfaitement verticaux
+	    \end{itemize}
+	  \end{itemize}
+	\end{frame}
+
+      %Sous-section Expérience
+      %Parler de notre manque d'expérience pour ce genre de projet
       \subsection{Expérience}
 	\begin{frame}
-	  
+	  \begin{itemize}
+	    \item Formation assez généraliste
+	    \item Nous ne sommes pas de vrais ingénieurs système
+	    \item Projet complexe et nécessite plus de temps (au moins deux ans)
+	    \item Contraintes auxquelles nous ne sommes pas habitués (matériel, délai de livraison, système)
+	  \end{itemize}
 	\end{frame}
   }
   
@@ -532,7 +596,24 @@
       \end{frame}
     
       \begin{frame}
-       
+	\frametitle{Implémentation}
+      
+	\begin{itemize}
+	  \item Création d'une organisation sur GitHub (https://github.com/NjordProject)
+	  \item Découpage de l'ensemble du projet en plusieurs sous-répertoires
+	  \item Hébergement d'un blog (http://njordproject.github.io/)
+	  \begin{itemize}
+	    \item français, anglais, japonais
+	    \item Suivi du projet
+	    \item Ressources pour d'autres projets
+	  \end{itemize}
+	  \item Utilisation de technologies différentes
+	  \begin{itemize}
+	    \item Arduino (hardware, software)
+	    \item Python (Numpy, MatPlotLib)
+	    \item Redis
+	  \end{itemize}
+	\end{itemize}
       \end{frame}
 
   }
