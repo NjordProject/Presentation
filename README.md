@@ -79,15 +79,39 @@ Une fois tous les éléments en notre possession nous avons pu souder les compos
 Une fois le drone assemblé, notre premier réflexe a été de vérifier qu'il décollait. Nous avons donc préparé un code qui se chargeait de faire tourner les moteurs à la moitié de leur capacité mais cela ne suffisait pas. Alors nous avons essayé de les faire tourner au maximum de leur capacité mais cela ne fonctionnait toujours pas alors. Mais on a constaté que lorsqu'on fournit la valeur maximum que l'Arduino peut envoyer les moteurs ne sont pas réellement à leur capacité maximum. Alors nous avons essayé de les alimenter en faisait un by-pass de l'Arduino. Cette fois-ci les moteurs tournaient bien au maximum de leur capacité, mais il n'a pas plus décollé. En fait on a constaté un second problème, un des moteurs tourne moins vite que les trois autres. En by-passant l'Arduino le drone pourrait peut-être décollé, car à un moment il a fait un back-flip (dû au fait qu'un moteur tourne moins vite).
 
 ##Analyse
+Le but de cette section est faire une analyse de nos erreurs afin de comprendre pourquoi nous n'avons pas obtenu les résultats attendus.
 
 ###Conception
+Dès le début nous avons fait des erreurs et notamment sur l'estimation du poids. Nous avons estimé que le poids du circuit imprimé serait relativement faible (de l'ordre de quelques grammes) alors que celui obtenu grâce à l'ENSEA est beaucoup trop lourd (Il est même l'élément le plus lourd de notre drone).  En ajoutant a cela les approximations et les éléments negligés ( étain issu de la soudure, broches de l'Arduino, etc..) on arrive à un poids de ..g au lieu des 35g initialement prévus.
+Cette forte différence de poids, dûe a une sous estimations de ces surcharges (estimées auparavant à 10% du poids total), empêche notre drone de décoller malgré une marge initiale confortable.
+Une meilleure estimation de ces surpoids nous aurait forcée à batir un drone utilisant des moteurs plus puissants, donc plus apte a supporter la masse du drone.
 
+Cherchant à créer un drone assez facile a contrôler, le choix des moteurs a été fixé sur des moteurs vifs (importante vitesse de rotation,  au détriment d'un couple important). Ce choix nous aurait permis d'avoir accès à une plage de vitesse de rotation importante, facilitant la gestion de la mécanique du drone. Ce choix initialement adapté fut au final une erreur rédibitoire, la puissance maximale des moteurs n'ayant pas une portée suffisante pour soutenir le poids du drone.
+
+De plus étant donné que nous ayons choisi les moteurs et la batterie du Crazyflie, notre drone fonctionne alors sur du 3,3V. Mais nous nous sommes rendus compte d'un problème après avoir commandé les composants. Les capteurs ultrasons que nous souhaitions utiliser ne fonctionne qu'en 5V. À partir de ce moment là nous savions que le drone que nous allions construire ne pourrait être qu'un prototype de notre application et que nous serions obliger de faire un second devis. 
 
 ###Entités externes
+L'une des caracteristique de notre PFE est la prise de contact avec de nombreux contacts exterieurs. Que ce soit pour les porte- moteurs, la creation de la pcb ou la decoupe. Le temps de recherche de ces contacts, ainsi que le temps de creations/modifications des pieces constituait une duree d'attente non reductible. Ainsi, du fait de cette attente,( associé a la perte de temps de recherche de ces contacts), les premiers vrais essaie areivèrét trop en aval du processus de creation( fevrier), ne nous laissant pas le temps de creer une v2 utilisant l'experience acquise precedement.
+Dans l'ideal, les premiers essais auraient du se derouler fin 2014.
 
+En raison de la source d'achat des pièces (site ali- express) nous permettant d'acquérir les pièces du drone a un coût réduit, il s'avère que la fiabilité des dites pièces s'en est fait ressentir (contrefaçon). Ainsi, alors que les moteurs ont été commandés via le même fournisseur, il est notable que ces derniers ne délivrent pas une puissance de crête identique (ce qui est visible par la réaction du drone lorsqu'on tente de le démarrer, l'un des côté n'a pas la puissance nécéssaire pour décoller).
+
+Aussi au moment du montage nous nous sommes rendu compte que notre Arduino initiale (qui était une contrefaçon) n'était pas exactement la même que l'officiel. Ainsi notre montage ne pouvait pas fonctionner. Alors nous avons dû en recommander une (vraie cette fois-ci). Ce qui a encore un peu retardé le projet.
+
+###Montage
+En l'absence de logistique adaptée et peu coûteuse, il a été décidé de faire de notre circuit imprimé notre chassie. Outre le coté très artisanal de ce choix, il présente 2 inconvénients majeurs:
+
+*	la fixation n'est pas infaillible (il arrive qu'un moteur quitte son orbite)
+*	puisque les moteurs sont fixés par nos soins, et non une machine, il est difficile (voir impossible) d'avoir 4 moteurs fixés parfaitement verticalement.  Il est en effet courant que certains moteurs aient une dérive vers un coté. Outre le fait que cela force le drone à avoir un mouvement de rotation (création d'une composante de force normale à l'axe du drone), cela a pour conséquence de générer aussi une perte de poussée.
 
 ###Expérience
+Bien qu'ayant suivi une formation assez généraliste, il est indéniable que nous ne possédons pas de connaissances faisant de nous de véritables ingénieurs système. Ainsi, quelques erreurs notables sont apparues : problème de tension d'entrée pour certains capteurs , erreur dans le choix des transistors, ...
 
+La création de drone est un marché en plein expansion mais relativement complexe. Le temps nécessaire pour ce genre de projet est généralement long  (de l'ordre de 2 ans pour le projet Crazyflie par exemple) pour des résultats encore perfectible (il su voir la relative instabilité de l'AR Drone pour avoir une idée de ce qui peut être améliorer). Les nombreux paramètres à prendre en compte (équilibrage, position des moteurs, poids, autonomie, ...) rendent cette étude particulierement complexe.
 
 ##Conclusion
+Au final nous avons mis en place un serveur quasiment fonctionnel (il nous faudrait un drone fontionnel pour pouvoir le terminer à 100%). Aussi nous avons créer une "entreprise" GitHub afin de pouvoir découper l'ensemble du projet en plusieurs sous répertoires. Ce qui nous a aussi permis d'héberger un blog (rédigé par nos soins en français, anglais et japonais) afin d'assurer le suivi de projet et permettre à n'importe qui de s'inspirer de ce que nous avons réalisé.
 
+Effectuer un drone en tant que PFE était un challenge énorme, les connaissances nécéssaires étant  pluridisciplinaires et complexes, et la moindre erreur quasi rédibitoire. Bien que ce projet fut enrichissant, les erreurs minimes fûrent trop nombreuses pour que le drone puisse être fonctionnel. Nous avons beaucoup appris de nos erreurs et si nous avions l'occasion de poursuivre ce projet sur une année supplémentaire, nous pourrions probablement obtenir des résultats un peu plus satisfaisant.
+
+Aussi ce projet ne nous a pas apporté que des connaissances techniques, mais aussi de l'expérience d'un point de vue relationnel. À plusieurs reprises nous avons fait des démarches afin de trouver de l'aide à l'extérieur de l'EISTI. Parfois cela n'a rien mené, mais au final nous avons toujours pu nous en sortir notamment grâce à Nga qui nous a aidé à obtenir le soutien de Polytech Instrumentation et Besma qui nous a mis en relation avec le personnel de l'ENSEA.
