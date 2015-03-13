@@ -4,6 +4,8 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{graphics}
+\usepackage{graphicx}
+\usepackage{subcaption}
 \usepackage{eurosym}
 \usepackage[francais]{babel}
 
@@ -278,6 +280,11 @@
 	  \begin{itemize}
 	    \item Réalisation du cahier des charges
 	    \item État de l'art
+	    \begin{itemize}
+	      \item Crazyflie (BitCraze)
+	      \item ARDrone (Parrot)
+	      \item Phantom (DJI)
+	    \end{itemize}
 	    \item Plusieurs type de drones (grand/petit, rapide/lent, agile/prise de vues...)
 	    \item Étape non négligeable d'un projet
 	  \end{itemize}
@@ -342,7 +349,8 @@
 	
 	  \begin{itemize}
 	    \item Besoin de stabiliser le drone
-	    \item MPU-6050 très répendu, petit, bon marché et embarque un accéléromètre
+	    \item MPU-6050 très répandu, petit, bon marché et embarque un 
+accéléromètre
 	    \item Besoin de déterminer la position du drone dans l'espace
 	    \begin{itemize}
 	      \item GPS : Trop peu précis pour une salle
@@ -369,8 +377,10 @@
 	  \begin{itemize}
 	    \item Nombreux composants sur le marché
 	    \begin{itemize}
-	      \item Modules XBee : Très célèbre mais trop coûteux ($\sim$ 30 \euro) et trop gros
-	      \item Fréquence radio : Célèbre, bon marché ($\sim$ 0,80 \euro) et petit
+	      \item Modules XBee : Très utilisé mais trop coûteux ($\sim$ 30 
+\euro) et trop gros
+	      \item Fréquence radio : Assez utilisé, bon marché ($\sim$ 0,80 
+\euro) et petit
 	    \end{itemize}
 	    \item NRF24L01 suffisant au sein d'une même pièce
 	  \end{itemize}
@@ -393,7 +403,7 @@
 	    \item Electric Speed Controler(ESC)
 	    \item Coûteux ($\sim$ 15 \euro / moteur)
 	    \item Lourd ($\sim$ 25g / ESC)
-	    \item Frabication possible (transistor)
+	    \item Fabrication possible (transistor)
 	  \end{itemize}
 	\end{frame}
 	
@@ -445,12 +455,28 @@
 	\begin{frame}
 	  \frametitle{Circuit imprimé}
 	
-	  \begin{figure}[htbp]
-	    \centering
-	    \includegraphics[scale=0.05]{img/carte_avant.jpg}
-	    \caption{Photo du circuit}
-	  \end{figure} 
-	\end{frame}
+% 	  \begin{figure}[htbp]
+% 	    \centering
+% 	    \includegraphics[scale=0.05]{img/carte_avant.jpg}
+% 	    \caption{Photo du circuit}
+% 	  \end{figure}
+	    \begin{figure}
+	      \begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[scale=0.04]{img/carte_avant.jpg}
+		\caption{Avant}
+		\label{fig:sfig1}
+	      \end{subfigure}%
+	      \begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[scale=0.04]{img/carte_apres.jpg}
+		\caption{Après}
+		\label{fig:sfig2}
+	      \end{subfigure}
+	      \caption{Circuit avant et après découpage}
+	      \label{fig:fig}
+	    \end{figure}
+	  \end{frame}
 	
 	\begin{frame}
 	  \frametitle{Fixations moteur}
